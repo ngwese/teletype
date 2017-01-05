@@ -63,6 +63,8 @@ extern const tele_op_t op_ARP_STEPS;
 extern const tele_op_t op_ARP_DIST;
 extern const tele_op_t op_ARP_GATE;
 extern const tele_op_t op_ARP_DIV;
+extern const tele_op_t op_ARP_RESET;
+extern const tele_op_t op_ARP_TRANS;
 
 
 #endif
