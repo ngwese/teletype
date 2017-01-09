@@ -171,6 +171,12 @@ static void op_ARP_TRANS_get(const void *data, scene_state_t *ss,
                              exec_state_t *es, command_state_t *cs);
 static void op_ARP_SLEW_get(const void *data, scene_state_t *ss,
                             exec_state_t *es, command_state_t *cs);
+static void op_ARP_FILL_get(const void *data, scene_state_t *ss,
+                            exec_state_t *es, command_state_t *cs);
+static void op_ARP_ROT_get(const void *data, scene_state_t *ss,
+                           exec_state_t *es, command_state_t *cs);
+static void op_ARP_ER_get(const void *data, scene_state_t *ss, exec_state_t *es,
+                          command_state_t *cs);
 
 
 // clang-format off
@@ -237,6 +243,9 @@ const tele_op_t op_ARP_DIV     = MAKE_GET_OP(ARP.DIV        , op_ARP_DIV_get    
 const tele_op_t op_ARP_RESET   = MAKE_GET_OP(ARP.RES        , op_ARP_RESET_get   , 1, false);
 const tele_op_t op_ARP_TRANS   = MAKE_GET_OP(ARP.TRANS      , op_ARP_TRANS_get   , 2, false);
 const tele_op_t op_ARP_SLEW    = MAKE_GET_OP(ARP.SLEW       , op_ARP_SLEW_get    , 2, false);
+const tele_op_t op_ARP_FILL    = MAKE_GET_OP(ARP.FILL       , op_ARP_FILL_get    , 2, false);
+const tele_op_t op_ARP_ROT     = MAKE_GET_OP(ARP.ROT        , op_ARP_ROT_get     , 2, false);
+const tele_op_t op_ARP_ER      = MAKE_GET_OP(ARP.ER         , op_ARP_ER_get      , 4, false);
 
 
 // clang-format on
@@ -1172,4 +1181,32 @@ static void op_ARP_SLEW_get(const void *NOTUSED(data),
     int16_t b = cs_pop(cs);
     uint8_t d[] = { II_ARP_SLEW, a, b >> 8, b & 0xff };
     tele_ii_tx(II_ARP_ADDR, d, 4);
+}
+
+static void op_ARP_FILL_get(const void *NOTUSED(data),
+                            scene_state_t *NOTUSED(ss),
+                            exec_state_t *NOTUSED(es), command_state_t *cs) {
+    int16_t a = cs_pop(cs);
+    int16_t b = cs_pop(cs);
+    uint8_t d[] = { II_ARP_FILL, a, b };
+    tele_ii_tx(II_ARP_ADDR, d, 3);
+}
+
+static void op_ARP_ROT_get(const void *NOTUSED(data),
+                           scene_state_t *NOTUSED(ss),
+                           exec_state_t *NOTUSED(es), command_state_t *cs) {
+    int16_t a = cs_pop(cs);
+    int16_t b = cs_pop(cs);
+    uint8_t d[] = { II_ARP_ROT, a, b >> 8, b & 0xff };
+    tele_ii_tx(II_ARP_ADDR, d, 4);
+}
+
+static void op_ARP_ER_get(const void *NOTUSED(data), scene_state_t *NOTUSED(ss),
+                          exec_state_t *NOTUSED(es), command_state_t *cs) {
+    int16_t a = cs_pop(cs);
+    int16_t b = cs_pop(cs);
+    int16_t c = cs_pop(cs);
+    int16_t e = cs_pop(cs);
+    uint8_t d[] = { II_ARP_ER, a, b, c, e >> 8, e & 0xff };
+    tele_ii_tx(II_ARP_ADDR, d, 6);
 }

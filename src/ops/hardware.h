@@ -66,6 +66,9 @@ extern const tele_op_t op_ARP_DIV;
 extern const tele_op_t op_ARP_RESET;
 extern const tele_op_t op_ARP_TRANS;
 extern const tele_op_t op_ARP_SLEW;
+extern const tele_op_t op_ARP_FILL;
+extern const tele_op_t op_ARP_ROT;
+extern const tele_op_t op_ARP_ER;
 
 
 #endif
