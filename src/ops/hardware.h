@@ -59,12 +59,11 @@ extern const tele_op_t op_CY_REV;
 
 extern const tele_op_t op_ARP_STYLE;
 extern const tele_op_t op_ARP_HOLD;
-extern const tele_op_t op_ARP_STEPS;
-extern const tele_op_t op_ARP_DIST;
+extern const tele_op_t op_ARP_RPT;
 extern const tele_op_t op_ARP_GATE;
 extern const tele_op_t op_ARP_DIV;
 extern const tele_op_t op_ARP_RESET;
-extern const tele_op_t op_ARP_TRANS;
+extern const tele_op_t op_ARP_SHIFT;
 extern const tele_op_t op_ARP_SLEW;
 extern const tele_op_t op_ARP_FILL;
 extern const tele_op_t op_ARP_ROT;
